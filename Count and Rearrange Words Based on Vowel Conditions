@@ -1,0 +1,64 @@
+/*Count and Rearrange Words Based on Vowel Conditions
+
+Write a Java program that reads a sentence from the user, removes extra spaces, converts it to uppercase, and processes each word. The program should:
+
+Count and display the number of words that start and end with a vowel.
+
+Print all words, placing the words that start and end with a vowel first, followed by the remaining words.
+
+Input Format:
+A single line containing a sentence.
+
+Output Format:
+An integer representing the count of words that start and end with a vowel.
+
+The rearranged sentence where words that meet the vowel condition appear first. */
+import java.util.*;
+class word
+{
+	private String s;
+	public word(String s)
+	{
+		s=s.trim().toUpperCase().replaceAll("\\s"," ");
+		this.s=s;
+	}
+	public void count()
+	{
+		int i,j=0;
+		
+		s=s+" ";String s2="";int c=0;
+int l=s.length();String v="",o="";
+		for(i=0;i<l;i++)
+		{
+			if(s.charAt(i)==' ')
+			{
+				s2=s.substring(j,i);
+				if(!s2.isEmpty() && isVowel(s2.charAt(0)) && isVowel(s2.charAt(s2.length()-1)))
+				{
+					c++;v+=s2+" ";
+				}
+				else
+					o+=s2+" ";
+				j=i+1;
+				
+			}
+			
+		}
+		
+		System.out.println(c);
+		System.out.println(v+o);
+	}
+private boolean isVowel(char c)
+{
+return "AEIOU".indexOf(c)!=-1 ;
+	
+}
+			
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		String s=sc.nextLine();
+		word obj=new word(s);
+		obj.count();
+	}
+}

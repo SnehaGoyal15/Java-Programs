@@ -1,0 +1,140 @@
+// Interface I1 with Java 9+ features
+interface I1
+{
+    void f1(); // Abstract method
+
+    default void f2() // Default method with implementation
+    {
+        System.out.println("Default method f2 in I1");
+    }
+
+    static void f3() // Static method in interface
+    {
+        System.out.println("Static method f3 in I1");
+    }
+
+    private void f4() // Private method (Java 9+ feature)
+    {
+        System.out.println("Private method f4 in I1");
+    }
+
+    private static void f5() // Private static method (Java 9+ feature)
+    {
+        System.out.println("Private static method f5 in I1");
+    }
+
+    default void accessPrivateMethods() // A default method to access private methods
+    {
+        f4(); // Calling private instance method
+        f5(); // Calling private static method
+    }
+}
+
+// Class A implementing I1
+class A implements I1
+{
+    public void f1()
+    {
+        System.out.println("interface I1 class A");
+    }
+}
+
+// Interface I2
+interface I2
+{
+    void f6();
+}
+
+// Class B implementing I2
+class B implements I2
+{
+    public void f6()
+    {
+        System.out.println("interface I2 class B");
+    }
+}
+
+// Interface I3 extending I1 and I2
+interface I3 extends I1, I2
+{
+    void f7();
+}
+
+// Class C implementing I3
+class C implements I3
+{
+    public void f1()
+    {
+        System.out.println("interface I1 class C");
+    }
+    
+    public void f6()
+    {
+        System.out.println("interface I2 class C");
+    }
+
+    public void f7()
+    {
+        System.out.println("interface I3 class C");
+    }
+}
+
+// Interface I4 extending I3
+interface I4 extends I3
+{
+    void f8();
+}
+
+// Class D implementing I4
+class D implements I4
+{
+    public void f1()
+    {
+        System.out.println("interface I1 class D");
+    }
+    
+    public void f6()
+    {
+        System.out.println("interface I2 class D");
+    }
+
+    public void f7()
+    {
+        System.out.println("interface I3 class D");
+    }
+
+    public void f8()
+    {
+        System.out.println("interface I4 class D");
+    }
+}
+
+// Main Class
+public class Interface
+{
+    public static void main(String args[])
+    {
+        A o1 = new A();
+        o1.f1();
+        o1.f2(); // Calls default method
+        o1.accessPrivateMethods(); // Calls private method via default method
+
+        I1.f3(); // Calls static method from interface
+
+        B o2 = new B();
+        o2.f6();
+
+        C o3 = new C();
+        o3.f1();
+        o3.f6();
+        o3.f7();
+        o3.f2(); // Calls inherited default method
+
+        D o4 = new D();
+        o4.f1();
+        o4.f6();
+        o4.f7();
+        o4.f8();
+        o4.f2(); // Calls inherited default method
+    }
+}

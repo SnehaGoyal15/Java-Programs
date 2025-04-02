@@ -1,0 +1,53 @@
+import java.util.*;
+class mostoccur
+{
+	String s;
+	public void cf(String s)
+	{
+		this.s=s;
+	}
+	public void count()
+	{
+		int l=s.length(),c,max=0;char ele=' ';
+		for(int i=0;i<l;i++)
+		{
+			char k=s.charAt(i);c=1;
+			for(int f=0;f<i;f++)
+			{
+				if(s.charAt(f)==k)
+					c=-1;break;
+			}
+			if(c==-1)
+				continue;
+			for(int j=i+1;j<l;j++)
+			{
+				char m=s.charAt(j);
+				if(k==m)
+				{
+					c++;
+				}
+			}
+			if(max<c)
+				{max=c;
+				ele=k;}
+		}
+		System.out.println("most occur is - "+ele);
+	}
+	public String get()
+	{
+		return s;
+	}
+}
+class occur
+{
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter ");
+		String s=sc.nextLine();
+		mostoccur obj=new mostoccur();
+		obj.cf(s);
+		obj.count();
+		System.out.println(obj.get());
+	}
+}

@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+class Vehicle
+{
+    int n; // Instance variable in Vehicle
+
+    Vehicle(int n) // Parameterized constructor
+    {
+        this.n = n;
+        System.out.println("A " + n);
+    }
+}
+
+class Car extends Vehicle
+{
+    int n;
+
+    Car(int num, int a)  
+    {   
+        super(a); // Must be the first statement in the constructor
+        this.n = num;
+        System.out.println("B " + num);
+    }
+
+    void run()
+    {
+        System.out.println("Car is running");
+    }
+}
+
+class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int userInput = sc.nextInt(); // Take input from user
+        System.out.print("Enter a number: ");
+        int userInput1 = sc.nextInt(); 
+
+        Car v = new Car(userInput, userInput1); // Pass user input to Car constructor
+        v.run(); // Call run() method
+    }
+}

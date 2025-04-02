@@ -1,0 +1,69 @@
+public class a
+{
+	a(int x)
+	{
+		System.out.println("Public class default constructor ");
+	}
+	public a(double y)
+	{
+		System.out.println("Public class public constructor ");
+	}
+	protected a(char z)
+	{
+		System.out.println("Public class protected constructor ");
+	}
+	private a(String s)
+	{
+		System.out.println("Public class private constructor ");
+	}
+	public static void pri()
+	{
+		a ob=new a("Private ");
+	}
+}
+class aMain
+{
+    public static void main(String args[])
+    {
+        a obj1 = new a(1.9); // Public constructor
+        a obj2 = new a('c'); // Protected constructor
+        a obj3 = new a(2); // Default constructor
+
+        // a obj4 = new a("private"); // ❌ Error: Private constructor not accessible
+
+        // Accessing private constructor through a public method
+        a.pri();
+    }
+}
+class C // Parent class
+{
+    public class PublicClass // Public inner class
+    {
+        PublicClass()
+        {
+            System.out.println("Public Inner Class Constructor");
+        }
+    }
+
+    protected class ProtectedClass // Protected inner class
+    {
+        ProtectedClass()
+        {
+            System.out.println("Protected Inner Class Constructor");
+        }
+    }
+}
+
+class Main
+{
+    public static void main(String[] args)
+    {
+        C outer = new C();
+
+        // Accessing the public inner class
+        C.PublicClass pubObj = outer.new PublicClass();
+
+        // Accessing the protected inner class (Allowed in same package)
+        C.ProtectedClass protObj = outer.new ProtectedClass();
+    }
+}

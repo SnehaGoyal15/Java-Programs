@@ -1,0 +1,37 @@
+import java.util.*;
+class sum
+{
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		
+			int n=sc.nextInt();
+			int a[]=new int[n];
+			int i;
+			for(i=0;i<n;i++)
+			{
+				a[i]=sc.nextInt();
+			}
+			int max=a[0],csum=a[0],s=0,e=0,t=0;
+			for(i=1;i<n;i++)
+			{
+				if(a[i]>csum+a[i])
+				{
+					csum=a[i];
+					t=i;
+				}
+				else
+				{
+					csum+=a[i];
+				}
+				if(csum>max)
+				{
+					max=csum;
+					s=t;
+					e=i;
+				}
+			}System.out.println("max "+max);
+			for(i=s;i<=e;i++)
+				System.out.println(a[i]+" ");
+}
+}

@@ -1,0 +1,57 @@
+import java.util.*;
+class remove
+{
+	private String s;
+	public void set(String s)
+	{
+		this.s=s;
+	}
+	
+	public String get()
+	{
+		return s;
+	}
+	public void dup()
+	{
+		String s2="";
+		int l=s.length();
+		int i,j;
+		for(i=0;i<l;i++)
+		{
+			
+			if(s2.indexOf(s.charAt(i))==-1)
+			{
+				s2=s2+s.charAt(i);
+			}
+		}
+		System.out.println("dup removed "+s2);
+	}
+	public void special()
+	{
+		int l=s.length();
+		int i,j;String r="";;
+		for(i=0;i<l;i++)
+		{
+			char k=s.charAt(i);
+			if(k>='a' && k<='z' || k>='0' && k<='9')
+			{
+				 r=r+k;
+			}
+		}
+		String result=s.replaceAll("[^a-zA-Z0-9]","");
+       		 System.out.println("String after removing special characters: " + result+" "+r);}
+}
+class re
+{
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter ");
+		String s=sc.nextLine();
+		remove obj=new remove();
+		obj.set(s);
+		System.out.println(obj.get());
+		obj.dup();obj.special();
+		
+	}
+}

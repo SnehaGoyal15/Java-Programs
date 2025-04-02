@@ -1,0 +1,46 @@
+import java.util.*;
+class Student
+{
+    
+    String s;
+
+    Student(String s)
+    {
+        this.s = s;
+    }
+void c1()
+    {int a=0,b=0,c=0;int i;
+for(i=0;i<s.length();i++)
+{
+char ch=s.charAt(i);
+        if(Character.isLetter(ch))
+{
+	if("AEIOUaeiou".indexOf(ch)<0)
+	a++;
+else
+b++;}
+else
+if(ch!=' ')
+{
+c++;}
+}System.out.println("V "+b+" C "+a+" S "+c );
+    }
+   void c2()
+    {
+	String r="";r=s.replaceAll("[aeiouAEIOU]","");
+	
+	
+        System.out.print(r);
+    }
+}
+
+class P
+{
+    public static void main(String[] args)
+    {Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();Student s1 = new Student(s);
+        
+
+        s1.c1();s1.c2();
+    }
+}

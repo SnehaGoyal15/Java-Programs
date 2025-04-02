@@ -1,0 +1,57 @@
+import java.util.*;
+class employee
+{
+	String empname,empdep;int empage;
+	void getdata(String n,String d,int a)
+	{
+		
+		empname=n;empage=a;empdep=d;}
+	void showdata()
+	{
+		System.out.println("name "+empname+"\n dep "+empdep+"\n age "+empage);}
+}
+class emain
+{
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println(" enter no. emp ");
+		int l=sc.nextInt();
+		sc.nextLine();
+		int i; 
+	if (l < 4) 
+        {
+            System.out.println("No");
+            return;
+        }
+		employee obj[]=new employee[l];
+		String n="";String d="";int a=0;
+		for(i=0;i<l;i++)
+		{
+			
+			System.out.println("enter "+(i+1)+" data name dep age ");
+			n=sc.nextLine();
+			d=sc.nextLine();
+			a=sc.nextInt();sc.nextLine();
+			obj[i]=new employee();
+			obj[i].getdata(n,d,a);
+			
+		}
+		for(i=0;i<l;i++)
+		{
+			obj[i].showdata();
+			System.out.println("enter name ");
+			String s=sc.nextLine();
+			if(s.equalsIgnoreCase(obj[i].empname))
+			{
+				obj[i].showdata();break;
+			}
+			else
+				System.out.println("no ");}
+			
+		
+		
+}
+}
+				
+		

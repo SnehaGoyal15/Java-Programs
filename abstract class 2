@@ -1,0 +1,48 @@
+import java.util.*;
+abstract class Temperature
+{
+	double temp;
+	public void setTempData(double t)
+	{
+		temp=t;
+	}
+	public abstract void changeTemp();
+}
+class Fahrenheit extends Temperature
+{
+	double ctemp;
+	public void changeTemp()
+	{
+		ctemp=5.0/9*(temp-32);
+		System.out.println("fahren to celsius :- "+ctemp);
+	}
+}
+class Celsius extends Temperature
+{
+	double ftemp;
+	public void changeTemp()
+	{
+		ftemp=9/5*(temp+32);
+		System.out.println("celsius to fahren:- "+ftemp);
+	}
+}
+class Main
+{
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		int temp;
+		System.out.println("enter temp in F");
+		temp=sc.nextInt();
+		
+		Fahrenheit obj=new Fahrenheit();
+		obj.setTempData(temp);
+		obj.changeTemp();
+		
+		System.out.println("enter temp in F");
+		temp=sc.nextInt();
+		Celsius ob=new Celsius();
+		ob.setTempData(temp);
+		ob.changeTemp();
+	}
+}

@@ -1,0 +1,130 @@
+
+import java.util.Scanner;
+
+class Bank 
+{
+    private static int nextAccountNumber = 1001;
+    private String name, address;
+    private int accountNumber;
+    private double balance;
+
+    public Bank(String name, String address, double balance) 
+    {
+        this.name = name;
+        this.address = address;
+        this.accountNumber = nextAccountNumber++;
+        this.balance = balance;
+    }
+
+    public int getAccountNumber() 
+    {
+        return accountNumber;
+    }
+
+    public void displayInfo() 
+    {
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Name: " + name);
+        System.out.println("Address: " + address);
+        System.out.println("Balance: " + balance);
+    }
+
+    public void deposit(double amount) 
+    {
+        balance += amount;
+        System.out.println("Amount Deposited Successfully!");
+    }
+
+    public void withdraw(double amount) 
+    {
+        if (amount > balance) 
+        {
+            System.out.println("Insufficient Balance!");
+        } 
+        else 
+        {
+            balance -= amount;
+            System.out.println("Amount Withdrawn Successfully!");
+        }
+    }
+
+    public void changeAddress(String newAddress) 
+    {
+        address = newAddress;
+        System.out.println("Address Updated Successfully!");
+    }
+}
+class A
+{
+
+
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of depositors: ");
+        int n = sc.nextInt();
+        Bank obj[]=new Bank[n];
+        for (int i = 0; i < n; i++) 
+        {
+            System.out.print("Enter name: ");
+            sc.nextLine(); 
+            String name = sc.nextLine();
+            System.out.print("Enter address: ");
+            String address = sc.nextLine();
+            System.out.print("Enter initial balance: ");
+            double balance = sc.nextDouble();
+            obj[i]=new Bank(name,address,balance);
+	    System.out.println("Acc no.:- "+obj[i].getAccountNumber());
+		
+        }
+
+        while (true) 
+        {
+            System.out.println("\n1. Display Depositor Info");
+            System.out.println("2. Deposit Amount");
+            System.out.println("3. Withdraw Amount");
+            System.out.println("4. Change Address");
+            System.out.println("5. Exit");
+            System.out.print("Choose an option: ");
+            int choice = sc.nextInt();
+
+            if (choice == 5) break;
+
+            System.out.print("Enter account number: ");
+            int accNum = sc.nextInt();
+            Bank obj2 = null;
+
+            for (int i = 0; i < n; i++) 
+            {
+                if (obj[i].getAccountNumber() == accNum) 
+                {
+                    
+
+            switch (choice) 
+            {
+                case 1:
+                    obj[i].displayInfo();
+                    break;
+                case 2:
+                    System.out.print("Enter amount to deposit: ");
+                    obj[i].deposit(sc.nextDouble());
+                    obj[i].displayInfo();
+                    break;
+                case 3:
+                    System.out.print("Enter amount to withdraw: ");
+                   obj[i].withdraw(sc.nextDouble());
+                    obj[i].displayInfo();
+                    break;
+                case 4:
+                    System.out.print("Enter new address: ");
+                    sc.nextLine();
+                    obj[i].changeAddress(sc.nextLine());
+                    obj[i].displayInfo();
+                    break;
+                default:
+                    System.out.println("Invalid Choice!");
+            }}
+        }
+     }
+    }
+}

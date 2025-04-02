@@ -1,0 +1,76 @@
+import java.util.*; 
+interface inter
+{
+	void set(String s);
+	int palindrome();
+}
+
+class palin implements inter
+{
+	String s;
+	public void set(String s)
+	{
+		this.s=s;
+	}
+	public int palindrome()
+	{
+		int c=0,l=s.length(),i,j;
+		for(i=0;i<l;i++)
+		{
+			for(j=i;j<l;j++)
+			{
+				String s2=s.substring(i,j+1);
+				if(isp(s2))
+				{
+					c++;
+				}
+			}
+		}
+		return c;
+	}
+public int word()
+	{
+		s=s+' ';int c1=0,l=s.length(),i,j=0;
+		for(i=0;i<l;i++)
+		{
+				if(s.charAt(i)==' ' )
+				{
+				String s2=s.substring(j,i);
+				if(isp(s2))
+				{
+					c1++;
+				}
+				j=i+1;
+				}
+			
+		}
+		
+		return c1;
+	}
+private boolean isp(String s2)
+{
+	int left=0,right=s2.length()-1;
+			while(left<right)
+				{
+					if(s2.charAt(left)!=s2.charAt(right))
+					{
+						return false;
+					}
+					left++; right--;
+				}
+				return true;
+	}
+}
+class palin2
+{
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		String s=sc.nextLine();
+		palin obj=new palin();
+		obj.set(s);
+		System.out.println("palins are "+obj.palindrome());
+		System.out.println("palins are "+obj.word());
+	}
+}
+

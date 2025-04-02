@@ -1,0 +1,15 @@
+import java.util.*;
+class sort
+{
+	
+public static void main(String args[])
+{
+Scanner sc=new Scanner(System.in);
+String s[]=new String[3];
+int k;
+for(k=0;k<3;k++)
+{
+s[k]=sc.nextLine();}
+
+Arrays.sort(s);for(k=0;k<3;k++)
+System.out.println(s[k]);}}

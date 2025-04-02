@@ -1,0 +1,49 @@
+import java.util.*;
+abstract class Shape
+{
+	public abstract void rectangle();
+	public abstract void square();
+	public abstract void circle();
+}
+class Area
+{
+	int length,breadth;
+	int side;
+	int radius;
+	Area(int l,int b,int s,int r)
+	{
+		length=l;
+		breadth=b;
+		side=s;
+		radius=r;
+	}
+	void rectangle()
+	{
+		System.out.println("Area of rectangle is :- "+length*breadth);
+	}
+	void square()
+	{
+		System.out.println("Area of square is :- "+side*side);
+	}
+	void circle()
+	{
+		System.out.println("Area of circle is :- "+3.14*radius*radius);
+	}
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		int l,b,s,r;
+		System.out.println("enter length ");
+		l=sc.nextInt();
+		System.out.println("enter breadth ");
+		b=sc.nextInt();
+		System.out.println("enter side ");
+		s=sc.nextInt();
+		System.out.println("enter radius ");
+		r=sc.nextInt();
+		Area obj=new Area(l,b,s,r);
+		obj.rectangle();
+		obj.square();
+		obj.circle();
+	}
+}
